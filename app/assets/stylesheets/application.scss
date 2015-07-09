@@ -5,7 +5,7 @@
 body {
   font-family: 'Raleway';
   padding-left: 2%;
-  padding-top: 2%;
+  padding-right: 2%;
 }
 
 h1 {
@@ -13,9 +13,14 @@ h1 {
   font-family: 'Ubuntu';
 }
 
+.badge-success {
+  @extend .badge;
+  background-color: green;
+}
+
 .btn {
-    border-width: 2px;
-    font-weight: 700;
-    background: none;
-    color: inherit;
+  border-width: 2px;
+  font-weight: 700;
+  background: none;
+  color: inherit;
 }

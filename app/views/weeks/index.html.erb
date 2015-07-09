@@ -8,7 +8,8 @@
           <h3 class="panel-title"><%= link_to week.name, week %></h3>
         </div>
         <div class="panel-body">
-          Amount of submissions: <span class="badge"><%=week.submissions.count%></span>
+          Amount of submissions: <span class="badge"><%= week.submissions.count %></span>,
+          Max points: <span class="badge"><%= week.max_points %></span>
         </div>
     </div>
     <% end %>

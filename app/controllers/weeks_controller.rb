@@ -70,6 +70,6 @@ class WeeksController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def week_params
-      params.require(:week).permit(:name)
+      params.require(:week).permit(:name, :max_points)
     end
 end

@@ -11,11 +11,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150709153935) do
+ActiveRecord::Schema.define(version: 20150709211820) do
 
   create_table "submissions", force: :cascade do |t|
     t.integer  "week_id"
-    t.integer  "student_id"
+    t.string   "student_id"
     t.integer  "points"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -25,6 +25,7 @@ ActiveRecord::Schema.define(version: 20150709153935) do
     t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer  "max_points"
   end
 
 end

@@ -6,11 +6,20 @@ class SubmissionsController < ApplicationController
   # GET /submissions.json
   def index
     @submissions = Submission.all
-  end
+    if params[:search]
+      @submissions = Submission.search(params[:search]).order("created_at DESC")
+    else
+      @submissions = Submission.all.order('created_at DESC')
+    end  end
 
   # GET /submissions/1
   # GET /submissions/1.json
   def show
+  end
+
+  def search
+    if params[:search].nil? then @pokes = Poke.sqlAll
+    else @pokes = Poke.search params[:search] end
   end
 
   # GET /submissions/new

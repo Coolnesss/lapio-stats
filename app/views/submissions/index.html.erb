@@ -2,30 +2,47 @@
 
 <h1>Submissions</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Week</th>
-      <th>Student</th>
-      <th>Points</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @submissions.each do |submission| %>
-      <tr>
-        <td><%= submission.week_id %></td>
-        <td><%= submission.student_id %></td>
-        <td><%= submission.points %></td>
-        <td><%= link_to 'Show', submission %></td>
-        <td><%= link_to 'Edit', edit_submission_path(submission) %></td>
-        <td><%= link_to 'Destroy', submission, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
+<div class="col col-md-8 col-md-offset-2">
+  <div class="form-group">
+    <div class="input-group">
+      <%= form_tag(submissions_path, :method => "get", id: "search-form") do %>
+        <%= text_field_tag :search, params[:search], placeholder: "Find submission", class:"form-control" %>
+        <span class="input-group-btn">
+          <%= submit_tag "Search", class:"btn" %>
+        </span>
+      <% end %>
+    </div>
+  </div>
+</div>
 <br>
 
-<%= link_to 'New Submission', new_submission_path %>
+<div class="col col-md-8 col-md-offset-2">
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Week</th>
+        <th>Student</th>
+        <th>Points</th>
+        <th>Percentage done</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @submissions.each do |submission| %>
+        <tr>
+          <td><%= submission.week.name %> (<%= submission.week_id %>)</td>
+          <td><span class="label label-primary"><%= submission.student_id %></span></td>
+          <td><span class="badge"><%= submission.points %></span></td>
+          <% if submission.percentage <= 90 %>
+            <td><span class="badge"><%= submission.percentage %></span></td>
+          <% else %>
+            <td><span class="badge-success"><%= submission.percentage %></span></td>
+          <% end %>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <%= link_to 'Create Submission', new_submission_path, class:"btn btn-success" %>
+</div>
+
+<br>
