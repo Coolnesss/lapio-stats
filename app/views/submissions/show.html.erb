@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Week:</strong>
+  <%= @submission.week_id %>
+</p>
+
+<p>
+  <strong>Student:</strong>
+  <%= @submission.student_id %>
+</p>
+
+<p>
+  <strong>Points:</strong>
+  <%= @submission.points %>
+</p>
+
+<%= link_to 'Edit', edit_submission_path(@submission) %> |
+<%= link_to 'Back', submissions_path %>
