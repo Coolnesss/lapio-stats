@@ -1,6 +1,29 @@
 <p id="notice"><%= notice %></p>
 
 <h1>Weeks</h1>
+
+<% if logged_in? %>
+<div class="col col-md-8 col-md-offset-2">
+  <div class="panel-group" id="accordion">
+    <div class="panel panel-success" id="panel1">
+        <div class="panel-heading">
+             <h4 class="panel-title">
+        <a data-toggle="collapse" data-target="#collapseOne"
+           href="#collapseOne" class="collapsed">
+          Create Submission
+        </a>
+      </h4>
+
+        </div>
+        <div id="collapseOne" class="panel-collapse collapse">
+            <div class="panel-body">
+              <%= render 'submissions/form' %>
+            </div>
+        </div>
+    </div>
+  </div>
+<% end %>
+</div>
   <div class="col col-md-8 col-md-offset-2">
     <% @weeks.each do |week| %>
       <div class="panel panel-default">
@@ -15,6 +38,8 @@
     <% end %>
   </div>
 <br>
-<div class="col col-md-8 col-md-offset-2">
-  <%= link_to "Create submission", new_submission_path, class: "btn btn-success" %>
-</div>
+<% if not logged_in? %>
+  <div class="col col-md-8 col-md-offset-2">
+    <%= link_to "Create submission", new_submission_path, class: "btn btn-success" %>
+  </div>
+<% end %>
