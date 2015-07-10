@@ -1,7 +1,10 @@
 class Submission < ActiveRecord::Base
   belongs_to :week
 
-  validates :student_id, presence: true, length: {is: 9}
+  validates :student_id, presence: true, length: {is: 9},
+    uniqueness: {
+      scope: :week_id, message: "There is already a submission with this student number on this week."
+    }
   validate :points_is_less_than_max
 
   def self.search(search)

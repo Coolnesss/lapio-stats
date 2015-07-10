@@ -7,10 +7,11 @@ class SubmissionsController < ApplicationController
   def index
     @submissions = Submission.all
     if params[:search]
-      @submissions = Submission.search(params[:search]).order("created_at DESC")
+      @submissions = Submission.search(params[:search]).order(:week_id, :student_id)
     else
-      @submissions = Submission.all.order('created_at DESC')
-    end  end
+      @submissions = Submission.all.order(:week_id, :student_id)
+    end
+  end
 
   # GET /submissions/1
   # GET /submissions/1.json

@@ -1,9 +1,10 @@
 Rails.application.routes.draw do
   resources :submissions
-
   resources :weeks
 
   root 'weeks#index'
+
+  get 'submissions_list' => 'submissions#sub_list', as: "sub_list"
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
