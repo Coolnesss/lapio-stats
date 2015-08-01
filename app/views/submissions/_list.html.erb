@@ -21,6 +21,9 @@
           <% else %>
             <td><span class="badge-success"><%= submission.percentage %></span></td>
           <% end %>
+          <% if current_user %>
+            <td><%= link_to 'Edit', edit_submission_path(submission), class:"btn btn-xs btn-warning" %>
+          <% end %>
         </tr>
       <% end %>
     </tbody>

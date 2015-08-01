@@ -1,6 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Submissions <%= link_to 'Create Submission', new_submission_path, class:"btn btn-success btn-xs" %>
+<h1>Submissions <% if current_user %><%= link_to 'Create Submission', new_submission_path, class:"btn btn-success btn-xs" %><% end %>
 </h1>
 <div class="col col-md-8 col-md-offset-2">
   <div class="form-group">

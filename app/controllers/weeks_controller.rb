@@ -1,7 +1,6 @@
 class WeeksController < ApplicationController
   before_action :set_week, only: [:show, :edit, :update, :destroy]
-  before_filter :authenticate, only: [:create, :new, :edit, :delete]
-
+  before_filter :authorize, except: [:index, :show]
   # GET /weeks
   # GET /weeks.json
   def index

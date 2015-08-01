@@ -1,6 +1,6 @@
 class SubmissionsController < ApplicationController
   before_action :set_submission, only: [:show, :edit, :update, :destroy]
-  before_filter :authenticate, only: [:create, :new, :edit, :delete]
+  before_filter :authorize, except: [:index, :show]
 
   # GET /submissions
   # GET /submissions.json
