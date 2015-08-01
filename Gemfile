@@ -41,11 +41,19 @@ group :production do
   gem 'rails_12factor'
 end
 
+group :test do
+  gem 'factory_girl_rails'
+  gem 'capybara'
+  gem 'launchy'
+end
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
+  gem 'rspec-rails'
   gem 'byebug'
   gem 'better_errors'
   gem 'sqlite3'
+  gem 'selenium-webdriver'
   # Access an IRB console on exception pages or by using <%= console %> in views
   gem 'web-console', '~> 2.0'
   gem 'rails_layout'
