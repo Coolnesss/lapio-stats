@@ -20,6 +20,9 @@ describe "Week" do
   end
 
   describe "Without admin" do
-
+    it "cannot access new week page" do
+      visit new_week_path
+      expect(page).to have_content("you should be signed in")
+    end
   end
 end

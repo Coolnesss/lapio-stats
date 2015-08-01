@@ -3,6 +3,14 @@ require 'rack/test'
 
 describe "Submission" do
   describe "When not signed in" do
+
+    before :each do
+      week = FactoryGirl.create :week
+      FactoryGirl.create(:submission, week: week)
+      FactoryGirl.create(:submission, student_id: "014401440", week: week)
+      FactoryGirl.create(:submission, student_id: "123123123", week: week)
+    end
+
     it "cannot create submission without signin" do
       visit new_submission_path
       expect(page).to have_content "you should be signed in"
@@ -11,7 +19,35 @@ describe "Submission" do
     it "cannot see submission create form on weeks page" do
       visit weeks_path
       expect(page).not_to have_content("Create Submission")
-    end    
+    end
+
+    it "can see submissions on list page" do
+      visit submissions_path
+
+      expect(page).to have_content(Submission.first.student_id)
+      expect(page).to have_content(Submission.second.student_id)
+      expect(page).to have_content(Submission.third.student_id)
+    end
+
+    it "can search for submissions on list page" do
+      visit submissions_path
+      expect(page).to have_content("123123123")
+
+      fill_in("Find submission", with: "014475359")
+      click_button("Search")
+
+      expect(page).to have_content("First week (1)")
+      expect(page).not_to have_content("123123123")
+    end
+
+    it "can click on student id to see its submissions" do
+      visit submissions_path
+      expect(page).to have_content("123123123")
+
+      click_link("014475359")
+      expect(page).not_to have_content("123123123")
+      expect(page).to have_content("First week (1)")
+    end
   end
 
   describe "When signed in" do
@@ -49,9 +85,33 @@ describe "Submission" do
       expect(Submission.count).to eq(1)
       expect(Submission.first.points).to eq(12)
     end
+
+    it "can access edit page" do
+      FactoryGirl.create :submission
+      visit edit_submission_path(Submission.first)
+      expect(page).to have_content "Editing Submission"
+    end
+
+    it "can access edit page from index page" do
+      FactoryGirl.create :submission
+
+      visit submissions_path
+      click_link("Edit")
+
+      expect(page).to have_content("Editing Submission")
+    end
+
+    it "can edit submission" do
+      FactoryGirl.create :submission
+
+      visit edit_submission_path(Submission.first)
+      expect(Submission.first.points).not_to eq(0)
+
+      fill_in("Points", with: 0)
+      click_button("Submit")
+
+      expect(Submission.first.points).to eq(0)
+    end
+
   end
-
-
-
-
 end
