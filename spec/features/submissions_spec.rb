@@ -11,9 +11,14 @@ describe "Submission" do
       FactoryGirl.create(:submission, student_id: "123123123", week: week)
     end
 
-    it "cannot create submission without signin" do
+    it "cannot create submission" do
       visit new_submission_path
       expect(page).to have_content "you should be signed in"
+    end
+
+    it "cannot delete a submission" do
+      visit submissions_path
+      expect(page).not_to have_content("Destroy")
     end
 
     it "cannot see submission create form on weeks page" do
@@ -112,6 +117,5 @@ describe "Submission" do
 
       expect(Submission.first.points).to eq(0)
     end
-
   end
 end

@@ -23,6 +23,7 @@
           <% end %>
           <% if current_user %>
             <td><%= link_to 'Edit', edit_submission_path(submission), class:"btn btn-xs btn-warning" %>
+            <td><%= link_to 'Destroy', submission, class: "btn btn-xs btn-danger", method: :delete, data: {confirm: 'Are you sure?' } %>
           <% end %>
         </tr>
       <% end %>

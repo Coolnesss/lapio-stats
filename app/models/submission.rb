@@ -3,9 +3,9 @@ class Submission < ActiveRecord::Base
 
   validates :student_id, presence: true, length: {is: 9},
     uniqueness: {
-      scope: :week_id, message: "There is already a submission with this student number on this week."
+      scope: :week_id, message: "ID already has a submission for this week."
     }
-  validate :points_is_less_than_max
+  validate :points_is_less_or_equal_then_max
 
   def self.search(search)
     where("student_id LIKE ?", "%#{search}%")
@@ -16,7 +16,7 @@ class Submission < ActiveRecord::Base
   end
 
   private
-    def points_is_less_than_max
-      errors.add(:points, "should be less than max points") if points > self.week.max_points
+    def points_is_less_or_equal_then_max
+      errors.add(:points, "should be less than #{self.week.max_points}, which is the maximum amount for the week.") if points > self.week.max_points
     end
 end

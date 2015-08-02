@@ -18,11 +18,6 @@ class SubmissionsController < ApplicationController
   def show
   end
 
-  def search
-    if params[:search].nil? then @pokes = Poke.sqlAll
-    else @pokes = Poke.search params[:search] end
-  end
-
   # GET /submissions/new
   def new
     @submission = Submission.new
