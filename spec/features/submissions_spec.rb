@@ -117,5 +117,14 @@ describe "Submission" do
 
       expect(Submission.first.points).to eq(0)
     end
+
+    it "can delete submission" do
+      FactoryGirl.create :submission
+
+      visit submissions_path
+
+      click_link("Destroy")
+      expect(Submission.count).to eq(0)
+    end
   end
 end
