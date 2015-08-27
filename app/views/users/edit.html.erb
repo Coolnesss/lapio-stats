@@ -1,0 +1,21 @@
+<h1> Change password </h1>
+
+
+<%= form_for(@user) do |f| %>
+
+  <div class="col-md-6 col-md-offset-2">
+    <div class="field">
+      <%= f.label :password %><br>
+      <%= f.password_field :password, class: "form-control" %>
+    </div>
+
+    <div class="field">
+      <%= f.label :password_confirmation %><br>
+      <%= f.password_field :password_confirmation, class: "form-control" %>
+    </div>
+
+    <div class="actions">
+      <%= f.submit 'Submit', class: "btn btn-success" %>
+    </div>
+  </div>
+<% end %>

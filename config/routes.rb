@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
   resources :submissions
   resources :weeks
+  resources :users
+
+
 
   root 'weeks#index'
 
