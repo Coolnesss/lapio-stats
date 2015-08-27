@@ -1,5 +1,6 @@
 class Submission < ActiveRecord::Base
   belongs_to :week
+  belongs_to :user
 
   validates :student_id, presence: true, length: {is: 9},
     uniqueness: {

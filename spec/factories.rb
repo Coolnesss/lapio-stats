@@ -13,5 +13,6 @@ FactoryGirl.define do
     student_id "014475359"
     points 20
     week
+    user
   end
 end

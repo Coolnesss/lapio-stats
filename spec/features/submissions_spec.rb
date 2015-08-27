@@ -126,5 +126,16 @@ describe "Submission" do
       click_link("Destroy")
       expect(Submission.count).to eq(0)
     end
+
+    it "saves a user id when a user creates a submission" do
+      FactoryGirl.create :week
+      visit new_submission_path
+
+      fill_in("Student", with: "014475359")
+      fill_in("Points", with: 12)
+      click_button("Submit")
+
+      expect(Submission.first.user).to eq(User.first)
+    end
   end
 end
