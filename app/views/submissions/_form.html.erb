@@ -15,7 +15,7 @@
 
   <div class="field">
     <%= f.label :week_id %><br>
-    <%= f.collection_select(:week_id, Week.all, :id, :name, {}, {class: 'form-control'}) %>
+    <%= f.collection_select(:week_id, Week.order(:id), :id, :name, {}, {class: 'form-control'}) %>
   </div>
   <div class="field">
     <%= f.label :student_id %><br>

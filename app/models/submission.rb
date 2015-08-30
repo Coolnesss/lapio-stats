@@ -1,10 +1,12 @@
 class Submission < ActiveRecord::Base
+  extend ActionView::Helpers::UrlHelper
+
   belongs_to :week
   belongs_to :user
 
   validates :student_id, presence: true, length: {is: 9},
     uniqueness: {
-      scope: :week_id, message: "ID already has a submission for this week."
+      scope: :week_id, message: "ID already has a submission for this week. "
     }
   validate :points_is_less_or_equal_then_max
 
