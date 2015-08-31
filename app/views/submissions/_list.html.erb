@@ -1,32 +1,37 @@
-
-<div class="col col-md-8 col-md-offset-2">
-  <table class="table table-hover" id="submissions">
-    <thead>
-      <tr>
-        <th>Week</th>
-        <th>Student</th>
-        <th>Points</th>
-        <th>Percentage done</th>
-      </tr>
-    </thead>
-
-    <tbody>
-      <% submissions.each do |submission| %>
-        <tr data-student="<%= submission.student_id %>">
-          <td><%= submission.week.name %> (<%= submission.week_id %>)</td>
-          <td><%= link_to submission.student_id, submissions_path(:search => submission.student_id), class:"btn btn-primary btn-xs" %></td>
-          <td><span class="badge"><%= submission.points %></span></td>
-          <% if submission.percentage <= 90 %>
-            <td><span class="badge"><%= submission.percentage %></span></td>
-          <% else %>
-            <td><span class="badge-success"><%= submission.percentage %></span></td>
-          <% end %>
+<div class="row">
+  <div class="col-md-8 col-md-offset-2">
+    <table class="table table-hover table-responsive" id="submissions">
+      <thead>
+        <tr>
+          <th>Week</th>
+          <th>Student</th>
+          <th>Points</th>
+          <th class="hidden-xs">Percentage done</th>
           <% if current_user %>
-            <td><%= link_to 'Edit', edit_submission_path(submission), class:"btn btn-xs btn-warning" %>
-            <td><%= link_to 'Destroy', submission, class: "btn btn-xs btn-danger", method: :delete, data: {confirm: 'Are you sure?' } %>
+            <th></th>
+            <th></th>
           <% end %>
         </tr>
-      <% end %>
-    </tbody>
-  </table>
+      </thead>
+
+      <tbody>
+        <% submissions.each do |submission| %>
+          <tr data-student="<%= submission.student_id %>">
+            <td><%= submission.week.name %> (<%= submission.week_id %>)</td>
+            <td><%= link_to submission.student_id, submissions_path(:search => submission.student_id), class:"btn btn-primary btn-xs" %></td>
+            <td class="hidden-xs"><span class="badge"><%= submission.points %></span></td>
+            <% if submission.percentage <= 90 %>
+              <td><span class="badge"><%= submission.percentage %></span></td>
+            <% else %>
+              <td><span class="badge-success"><%= submission.percentage %></span></td>
+            <% end %>
+            <% if current_user %>
+              <td><%= link_to 'Edit', edit_submission_path(submission), class:"btn btn-xs btn-warning" %>
+              <td><%= link_to 'Destroy', submission, class: "btn btn-xs btn-danger", method: :delete, data: {confirm: 'Are you sure?' } %>
+            <% end %>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
 </div>

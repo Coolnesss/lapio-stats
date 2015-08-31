@@ -19,8 +19,8 @@ describe "User" do
     expect(page).to have_content("User updated successfully")
     click_link("Sign out")
 
-    expect(page).not_to have_content("joni signed in")
+    expect(page).not_to have_content("joni")
     sign_in(name:"joni", password:"parasta")
-    expect(page).to have_content("joni signed in")
+    expect(page).to have_content("joni")
   end
 end
