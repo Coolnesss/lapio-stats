@@ -1,8 +1,9 @@
 class Submission < ActiveRecord::Base
-  extend ActionView::Helpers::UrlHelper
 
   belongs_to :week
   belongs_to :user
+
+  validate :legit_number?, on: :create
 
   validates :student_id, presence: true, length: {is: 9},
     uniqueness: {
@@ -16,6 +17,18 @@ class Submission < ActiveRecord::Base
 
   def percentage
     ((self.points.to_f / self.week.max_points) * 100).round(2)
+  end
+
+  def legit_number?
+    errors.add(:student_id, "ID is not valid") unless Submission.validate_number(self.student_id)
+  end
+
+  def self.validate_number(num)
+    b = [3, 7, 1, 3, 7, 1, 3, 7]
+    return false unless num.length == 9
+    a = num.split("").map{|p| p.to_i}.take(8)
+    ans = (10 - (a.zip(b).map{|i,j| i*j }.inject(:+)) % 10) % 10
+    return (num[8].to_i == ans)
   end
 
   private

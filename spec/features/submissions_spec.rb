@@ -7,7 +7,7 @@ describe "Submission" do
     before :each do
       week = FactoryGirl.create :week
       FactoryGirl.create(:submission, week: week)
-      FactoryGirl.create(:submission, student_id: "014401440", week: week)
+      FactoryGirl.create(:submission, student_id: "014524721", week: week)
       FactoryGirl.create(:submission, student_id: "123123123", week: week)
     end
 
@@ -89,6 +89,17 @@ describe "Submission" do
 
       expect(Submission.count).to eq(1)
       expect(Submission.first.points).to eq(12)
+    end
+
+    it "Cannot create a submission with an invalid student ID" do
+      FactoryGirl.create :week
+      visit weeks_path
+      click_link("Create Submission")
+      fill_in("Student", with: "014401444")
+      fill_in("Points", with: 12)
+      click_button("Submit")
+
+      expect(page).to have_content("Student ID is not valid")
     end
 
     it "can access edit page" do
