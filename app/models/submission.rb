@@ -7,9 +7,13 @@ class Submission < ActiveRecord::Base
 
   validates :student_id, presence: true, length: {is: 9},
     uniqueness: {
-      scope: :week_id, message: "ID already has a submission for this week. "
+      scope: :week_id, message: "ID already has a submission for this week."
     }
   validate :points_is_less_or_equal_then_max
+
+  def duplicate
+    Submission.where(student_id: student_id, week: week).first
+  end
 
   def self.search(search)
     where("student_id LIKE ?", "%#{search}%")

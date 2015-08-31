@@ -7,7 +7,7 @@
 
       <ul>
       <% @submission.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
+        <li><%= message.html_safe %></li>
       <% end %>
       </ul>
     </div>

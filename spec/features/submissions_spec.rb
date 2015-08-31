@@ -148,5 +148,29 @@ describe "Submission" do
 
       expect(Submission.first.user).to eq(User.first)
     end
+
+    it "redirects to edit page if trying to create duplicate" do
+      FactoryGirl.create(:submission)
+      visit new_submission_path
+
+      fill_in("Student", with: "014475359")
+      fill_in("Points", with: 12)
+      click_button("Submit")
+
+      expect(page).to have_content("Editing Submission")
+      expect(page).to have_content("Submission for student with same exercise set already exists. Edit it below.")
+    end
+
+    it "doesnt redirect if creating new submission for a different week" do
+      FactoryGirl.create(:week, name:"Best week")
+      FactoryGirl.create(:submission)
+
+      visit new_submission_path
+      fill_in("Student", with: "014475359")
+      fill_in("Points", with: 12)
+      click_button("Submit")
+
+      expect(page).to have_content("Submission was successfully created")
+    end
   end
 end

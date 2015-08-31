@@ -32,7 +32,11 @@ class SubmissionsController < ApplicationController
   def create
     @submission = Submission.new(submission_params)
     @submission.user = current_user
-    
+
+    if dup = @submission.duplicate
+      redirect_to edit_submission_path(dup), notice: "Submission for student with same exercise set already exists. Edit it below."
+      return
+    end
     respond_to do |format|
       if @submission.save
         format.html { redirect_to submissions_path, notice: 'Submission was successfully created.' }
