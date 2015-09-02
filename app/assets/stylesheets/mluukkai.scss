@@ -133,7 +133,7 @@
 	#luke:hover {
 	    background-position: -326px 0;
 	    opacity: .5;
-	    cursor: url('mluukkai/beer.png'), crosshair;
+	    cursor: image-url('mluukkai/beer.png'), crosshair;
 	    -webkit-animation-timing-function: steps(1);
 	    -webkit-animation-name: 'head';
 	    -webkit-animation-duration: 2s;
