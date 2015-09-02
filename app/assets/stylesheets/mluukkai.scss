@@ -1,151 +1,196 @@
 @media (min-width:1281px) {
 	body.easter {
-	    -webkit-transition: 1000ms background-color linear;
-	    -webkit-animation-name: 'background';
-	    -webkit-animation-iteration-count: infinite;
-	    -webkit-animation-duration: 1.8s;
-	    -webkit-transform-origin: 50% 50%;
-	    -webkit-animation-timing-function: linear;
-	    cursor: image-url('mluukkai/beer.png'), crosshair;
+		-webkit-transition: 1000ms background-color linear;
+		-moz-transition: 1000ms background-color linear;
+		-webkit-animation-name: background;
+		-moz-animation-name: background;
+		-webkit-animation-iteration-count: infinite;
+		-moz-animation-iteration-count: infinite;
+		-webkit-animation-duration: 1.8s;
+		-moz-animation-duration: 1.8s;
+		-webkit-transform-origin: 50% 50%;
+		-moz-transform-origin: 50% 50%;
+		-webkit-animation-timing-function: linear;
+		-moz-animation-timing-function: linear;
+		cursor: image-url('mluukkai/beer.png'), crosshair;
 	}
 	body.easter * {
-	    -webkit-transform: rotate(2deg);
-	    -webkit-animation-name: 'easter';
-	    -webkit-animation-iteration-count: infinite;
-	    -webkit-animation-duration: 1.5s;
-	    -webkit-transform-origin: 50% 50%;
-	    -webkit-animation-timing-function: linear;
-	    -webkit-transition: all 0.2s;
+		-webkit-transform: rotate(2deg);
+		-moz-transform: rotate(2deg);
+		-webkit-animation-name: easter;
+		-moz-animation-name: easter;
+		-webkit-animation-iteration-count: infinite;
+		-moz-animation-iteration-count: infinite;
+		-webkit-animation-duration: 1.5s;
+		-moz-animation-duration: 1.5s;
+		-webkit-transform-origin: 50% 50%;
+		-moz-transform-origin: 50% 50%;
+		-webkit-animation-timing-function: linear;
+		-moz-animation-timing-function: linear;
+		-webkit-transition: all 0.2s;
+		-moz-transition: all 0.2s;
 	}
-	@-webkit-keyframes background {
-	    0% {
-	        background-color: white;
-	    }
-	    20% {
-	        background-color: green;
-	    }
-	    40% {
-	        background-color: yellow;
-	    }
-	    60% {
-	        background-color: blue;
-	    }
-	    80% {
-	        background-color: red;
-	    }
-	    100% {
-	        background-color: white;
-	    }
+	@keyframes background {
+		0% {
+			background-color: white;
+		}
+		20% {
+			background-color: green;
+		}
+		40% {
+			background-color: yellow;
+		}
+		60% {
+			background-color: blue;
+		}
+		80% {
+			background-color: red;
+		}
+		100% {
+			background-color: white;
+		}
 	}
-	@-webkit-keyframes easter {
-	    0% {
-	        -webkit-transform: translate(2px, 1px) rotate(0deg);
-	    }
-	    10% {
-	        -webkit-transform: translate(-1px, -2px) rotate(-2deg);
-	    }
-	    20% {
-	        -webkit-transform: translate(-3px, 0px) rotate(2deg);
-	    }
-	    30% {
-	        -webkit-transform: translate(0px, 2px) rotate(0deg);
-	    }
-	    40% {
-	        -webkit-transform: translate(2px, -1px) rotate(2deg);
-	    }
-	    50% {
-	        -webkit-transform: translate(-1px, 1px) rotate(-2deg);
-	    }
-	    60% {
-	        -webkit-transform: translate(-3px, -2px) rotate(0deg);
-	    }
-	    70% {
-	        -webkit-transform: translate(2px, 1px) rotate(-2deg);
-	    }
-	    80% {
-	        -webkit-transform: translate(-1px, -2px) rotate(2deg);
-	    }
-	    90% {
-	        -webkit-transform: translate(4px, -2px) rotate(0deg);
-	    }
-	    100% {
-	        -webkit-transform: translate(4px, -5px) rotate(-2deg);
-	    }
+	@keyframes easter {
+		0% {
+			-webkit-transform: translate(2px, 1px) rotate(0deg);
+			-moz-transform: translate(2px, 1px) rotate(0deg);
+		}
+		10% {
+			-webkit-transform: translate(-1px, -2px) rotate(-2deg);
+			-moz-transform: translate(-1px, -2px) rotate(-2deg);
+		}
+		20% {
+			-webkit-transform: translate(-3px, 0px) rotate(2deg);
+			-moz-transform: translate(-3px, 0px) rotate(2deg);
+		}
+		30% {
+			-webkit-transform: translate(0px, 2px) rotate(0deg);
+			-moz-transform: translate(0px, 2px) rotate(0deg);
+		}
+		40% {
+			-webkit-transform: translate(2px, -1px) rotate(2deg);
+			-moz-transform: translate(2px, -1px) rotate(2deg);
+		}
+		50% {
+			-webkit-transform: translate(-1px, 1px) rotate(-2deg);
+			-moz-transform: translate(-1px, 1px) rotate(-2deg);
+		}
+		60% {
+			-webkit-transform: translate(-3px, -2px) rotate(0deg);
+			-moz-transform: translate(-3px, -2px) rotate(0deg);
+		}
+		70% {
+			-webkit-transform: translate(2px, 1px) rotate(-2deg);
+			-moz-transform: translate(2px, 1px) rotate(-2deg);
+		}
+		80% {
+			-webkit-transform: translate(-1px, -2px) rotate(2deg);
+			-moz-transform: translate(-1px, -2px) rotate(2deg);
+		}
+		90% {
+			-webkit-transform: translate(4px, -2px) rotate(0deg);
+			-moz-transform: translate(4px, -2px) rotate(0deg);
+		}
+		100% {
+			-webkit-transform: translate(4px, -5px) rotate(-2deg);
+			-moz-transform: translate(4px, -5px) rotate(-2deg);
+		}
 	}
-	@-webkit-keyframes head {
-	    0% {
-	        background-position: 0 0;
-	    }
-	    50% {
-	        background-position: -326px 0;
-	    }
-	    100% {
-	        background-position: 0 0;
-	    }
+	@keyframes head {
+		0% {
+			background-position: 0 0;
+		}
+		50% {
+			background-position: -326px 0;
+		}
+		100% {
+			background-position: 0 0;
+		}
 	}
-	@-webkit-keyframes walk {
-	    0% {} 10% {
-	        -webkit-transform: rotateY(40deg) translate(-20px);
-	    }
-	    20% {
-	        -webkit-transform: rotateY(0deg) translate(-70px);
-	    }
-	    30% {
-	        -webkit-transform: rotateY(40deg) translate(-150px);
-	    }
-	    40% {
-	        -webkit-transform: rotateY(90deg) translate(0px);
-	    }
-	    50% {
-	        -webkit-transform: rotateY(180deg) translate(100px);
-	    }
-	    60% {
-	        -webkit-transform: rotateY(220deg) translate(80px);
-	    }
-	    70% {
-	        -webkit-transform: rotateY(160deg) translate(40px);
-	    }
-	    80% {
-	        -webkit-transform: rotateY(180deg) translate(0px);
-	    }
-	    85% {
-	        -webkit-transform: rotateY(180deg) translate(0px) rotate(-180deg);
-	    }
-	    90% {
-	        -webkit-transform: rotateY(180deg) translate(0px) rotate(-360deg);
-	    }
-	    100% {
-	        -webkit-transform: rotateY(0deg) translate(0px);
-	    }
+	@keyframes walk {
+		0% {}
+		10% {
+			-webkit-transform: rotateY(40deg) translate(-20px);
+			-moz-transform: rotateY(40deg) translate(-20px);
+		}
+		20% {
+			-webkit-transform: rotateY(0deg) translate(-70px);
+			-moz-transform: rotateY(0deg) translate(-70px);
+		}
+		30% {
+			-webkit-transform: rotateY(40deg) translate(-150px);
+			-moz-transform: rotateY(40deg) translate(-150px);
+		}
+		40% {
+			-webkit-transform: rotateY(90deg) translate(0px);
+			-moz-transform: rotateY(90deg) translate(0px);
+		}
+		50% {
+			-webkit-transform: rotateY(180deg) translate(100px);
+			-moz-transform: rotateY(180deg) translate(100px);
+		}
+		60% {
+			-webkit-transform: rotateY(220deg) translate(80px);
+			-moz-transform: rotateY(220deg) translate(80px);
+		}
+		70% {
+			-webkit-transform: rotateY(160deg) translate(40px);
+			-moz-transform: rotateY(160deg) translate(40px);
+		}
+		80% {
+			-webkit-transform: rotateY(180deg) translate(0px);
+			-moz-transform: rotateY(180deg) translate(0px);
+		}
+		85% {
+			-webkit-transform: rotateY(180deg) translate(0px) rotate(-180deg);
+			-moz-transform: rotateY(180deg) translate(0px) rotate(-180deg);
+		}
+		90% {
+			-webkit-transform: rotateY(180deg) translate(0px) rotate(-360deg);
+			-moz-transform: rotateY(180deg) translate(0px) rotate(-360deg);
+		}
+		100% {
+			-webkit-transform: rotateY(0deg) translate(0px);
+			-moz-transform: rotateY(0deg) translate(0px);
+		}
 	}
 	#luke {
-	    width: 316px;
-	    height: 480px;
-	    background-position: 0 0;
-	    background-image: image-url('mluukkai/lukedisko.png');
-	    background-repeat: no-repeat;
-	    opacity: .02;
-	    position: fixed;
-	    right: 100px;
-	    bottom: 50px;
-	    -webkit-transition: opacity .5s;
+		width: 316px;
+		height: 480px;
+		background-position: 0 0;
+		background-image: image-url('mluukkai/lukedisko.png');
+		background-repeat: no-repeat;
+		opacity: .02;
+		position: fixed;
+		right: 100px;
+		bottom: 50px;
+		-webkit-transition: opacity .5s;
+		-moz-transition: opacity .5s;
 	}
 	#luke:hover {
-	    background-position: -326px 0;
-	    opacity: .5;
-	    cursor: image-url('mluukkai/beer.png'), crosshair;
-	    -webkit-animation-timing-function: steps(1);
-	    -webkit-animation-name: 'head';
-	    -webkit-animation-duration: 2s;
-	    -webkit-animation-iteration-count: infinite;
+		background-position: -326px 0;
+		opacity: .5;
+		cursor: image-url('mluukkai/beer.png'), crosshair;
+		-webkit-animation-timing-function: steps(1);
+		-moz-animation-timing-function: steps(1);
+		-webkit-animation-name: head;
+		-moz-animation-name: head;
+		-webkit-animation-duration: 2s;
+		-moz-animation-duration: 2s;
+		-webkit-animation-iteration-count: infinite;
+		-moz-animation-iteration-count: infinite;
 	}
 	body.easter #luke {
-	    -webkit-animation-name: 'walk', 'head';
-	    -webkit-animation-iteration-count: infinite;
-	    -webkit-animation-duration: 5s, 1s;
-	    -webkit-animation-timing-function: ease-in-out, steps(1);
-	    opacity: .7;
-	    border-color: green;
-	    border-radius: 10px 0 0;
+		-webkit-animation-name: walk, head;
+		-moz-animation-name: walk, head;
+		-webkit-animation-iteration-count: infinite;
+		-moz-animation-iteration-count: infinite;
+		-webkit-animation-duration: 5s, 1s;
+		-moz-animation-duration: 5s, 1s;
+		-webkit-animation-timing-function: ease-in-out, steps(1);
+		-moz-animation-timing-function: ease-in-out, steps(1);
+		opacity: .7;
+		border-color: green;
+		border-radius: 10px 0 0;
 	}
 }
