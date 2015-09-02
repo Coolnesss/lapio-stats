@@ -1,6 +1,6 @@
-
-jQuery(document).ready(function($){
+$(document).on('ready page:load', function(){
   var search = $("#search");
+  search.focus();
   var submissions = $("#submissions tbody tr");
   search.keyup(function(event) {
     var filter = search.val();
