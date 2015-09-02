@@ -34,7 +34,7 @@ class SubmissionsController < ApplicationController
     @submission.user = current_user
 
     if dup = @submission.duplicate
-      redirect_to edit_submission_path(dup), notice: "Submission for student with same exercise set already exists. Edit it below."
+      redirect_to edit_submission_path(dup), alert: "Submission for student with same exercise set already exists. Edit it below."
       return
     end
     respond_to do |format|
@@ -67,7 +67,7 @@ class SubmissionsController < ApplicationController
   def destroy
     @submission.destroy
     respond_to do |format|
-      format.html { redirect_to submissions_url, notice: 'Submission was successfully destroyed.' }
+      format.html { redirect_to submissions_url, alert: 'Submission was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

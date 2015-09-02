@@ -9,7 +9,7 @@ def sign_in(credentials)
   visit login_path
   fill_in('name', with:credentials[:name])
   fill_in('password', with:credentials[:password])
-  click_button('Submit')
+  click_button('Sign in')
 end
 # Requires supporting ruby files with custom matchers and macros, etc, in
 # spec/support/ and its subdirectories. Files matching `spec/**/*_spec.rb` are
