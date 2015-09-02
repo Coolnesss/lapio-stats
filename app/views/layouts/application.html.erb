@@ -41,6 +41,13 @@
                 <span class='fa fa-keyboard-o'></span> Submissions
               <% end %>
             </li>
+            <% if current_user %>
+            <li>
+              <%= link_to new_submission_path do %>
+                <i class="fa fa-plus"></i> New submission
+              <% end %>
+            </li>
+            <% end %>
           </ul>
 
           <ul class="nav navbar-nav navbar-right">
@@ -71,5 +78,6 @@
       <%= flash_messages %>
       <%= yield %>
     </div>
+    <div id="luke" class="easter"></div>
   </body>
 </html>

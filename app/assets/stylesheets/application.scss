@@ -1,11 +1,38 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 @import "font-awesome";
+@import "mluukkai";
 
 body {
   font-family: 'Raleway';
   padding-left: 2%;
   padding-right: 2%;
+}
+
+.navbar {
+  background-color: #3F51B5;
+  border-color: #303F9F;
+  border-radius: 0 0 10px 10px;
+}
+
+.navbar-default .navbar-brand {
+    color: #ECEFF1;
+}
+
+.navbar-default .navbar-brand:hover {
+    color: #FFEB3B;
+}
+
+.navbar-default .navbar-nav > li > a {
+  color: #ffffff;
+}
+
+.navbar-default .navbar-nav > li > a:hover {
+  color: #CFD8DC;
+}
+
+.navbar-default .navbar-toggle .icon-bar {
+    background-color: white;
 }
 
 h1 {
