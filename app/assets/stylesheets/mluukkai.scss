@@ -166,6 +166,7 @@ body.easter * {
 	-webkit-transition: opacity .5s;
 	-moz-transition: opacity .5s;
 	display: none;
+	z-index: -1;
 }
 #luke:hover {
 	background-position: -326px 0;
