@@ -1,12 +1,15 @@
-
-$(function() {
+$(document).on('ready page:load', function(){
   var search = $("#search");
+  search.focus();
   var submissions = $("#submissions tbody tr");
-  search.on('keyup', function(event) {
+  search.keyup(function(event) {
     var filter = search.val();
+    toggleMluukkai(filter === "mluukkai");
     submissions.each(function(index, elem) {
       var $elem = $(elem);
-      $elem.toggle($elem.data("student").indexOf(filter) !== -1);
+      var studentNumber = $elem.data("student");
+      if (!studentNumber) return;
+      $elem.toggle(studentNumber.indexOf(filter) !== -1);
     });
   })
 });

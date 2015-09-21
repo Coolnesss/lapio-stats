@@ -38,7 +38,7 @@ describe "Submission" do
       visit submissions_path
       expect(page).to have_content("123123123")
 
-      fill_in("Find submission", with: "014475359")
+      fill_in("Find submission with student number", with: "014475359")
       click_button("Search")
 
       expect(page).to have_content("First week (1)")

@@ -1,19 +1,27 @@
-<p id="notice"><%= notice %></p>
-
-<h1>Submissions <% if current_user %><%= link_to 'Create Submission', new_submission_path, class:"btn btn-success btn-xs" %><% end %>
-</h1>
-<div class="col col-md-8 col-md-offset-2">
-  <div class="form-group">
-    <div class="input-group">
-      <%= form_tag(submissions_path, :method => "get", id: "search-form") do %>
-        <%= text_field_tag :search, params[:search], placeholder: "Find submission", class:"form-control" %>
-        <span class="input-group-btn">
-          <%= submit_tag "Search", class:"btn" %>
-        </span>
-      <% end %>
-    </div>
+<div class="row">
+  <h1>
+    Submissions
+    <% if current_user %>
+      <%= link_to 'Create Submission', new_submission_path, class:"btn btn-success btn-xs" %>
+    <% end %>
+  </h1>
+</div>
+<div class="row">
+  <div class="col col-md-8 col-md-offset-2">
+    <%= form_tag(submissions_path, :method => "get", id: "search-form") do %>
+      <div class="row">
+        <div class="form-group col-md-10 col-xs-8">
+          <label class="sr-only" for="search">Student number</label>
+          <div class="input-group">
+            <span class="input-group-addon"><span class="glyphicon glyphicon-search"></span></span>
+            <%= text_field_tag :search, params[:search], placeholder: "Find submission with student number", class:"form-control" %>
+          </div>
+        </div>
+        <div class="col-md-2 col-xs-4">
+          <%= submit_tag "Search", class:"btn btn-default" %>
+        </div>
+      </div>
+    <% end %>
   </div>
 </div>
-<br>
 <%= render 'list', submissions: @submissions %>
-<br>
