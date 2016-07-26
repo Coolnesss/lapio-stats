@@ -5,12 +5,12 @@ describe "Week" do
   describe "As admin" do
     before :each do
       FactoryGirl.create :user
-      sign_in(name:"joni", password:"paras")
+      sign_in(name: User.first.name, password:"paras")
     end
 
     it "can create a week" do
       visit new_week_path
-      fill_in("week_max_points", with:100)
+      fill_in("week_max_points", with: 100)
       fill_in("Name", with:"Best week")
       click_button("Create Week")
 

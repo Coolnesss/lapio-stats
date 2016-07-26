@@ -1,0 +1,39 @@
+
+
+<%= form_for(@user) do |f| %>
+
+  <div class="col-md-6 col-md-offset-2">
+    <h1> Create User </h1>
+
+    <% if @user.errors.any? %>
+      <div class="alert alert-danger">
+        <h4>Oh snap! You got an error!</h4>
+
+        <ul>
+        <% @user.errors.full_messages.each do |message| %>
+          <li><%= message.html_safe %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="field">
+      <%= f.label :name %><br>
+      <%= f.text_field :name, class: "form-control" %>
+    </div>
+
+    <div class="field">
+      <%= f.label :password %><br>
+      <%= f.password_field :password, class: "form-control" %>
+    </div>
+
+    <div class="field">
+      <%= f.label :password_confirmation %><br>
+      <%= f.password_field :password_confirmation, class: "form-control" %>
+    </div>
+    <br>
+    <div class="actions">
+      <%= f.submit 'Submit', class: "btn btn-success" %>
+    </div>
+  </div>
+<% end %>

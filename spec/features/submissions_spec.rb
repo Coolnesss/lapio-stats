@@ -59,7 +59,7 @@ describe "Submission" do
 
     before :each do
       FactoryGirl.create :user
-      sign_in(name:"joni", password:"paras")
+      sign_in(name: User.first.name , password:"paras")
     end
 
     it "can access submission create page" do

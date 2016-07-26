@@ -64,6 +64,11 @@
               </li>
             <% else %>
               <li>
+                <%= link_to signup_path do %>
+                  <span class='fa fa-user-plus fa-fw'></span> Register
+                <% end %>
+              </li>
+              <li>
                 <%= link_to login_path do %>
                   <span class='fa fa-sign-in fa-fw'></span> Sign in
                 <% end %>

@@ -2,25 +2,57 @@ require 'rails_helper'
 
 describe "User" do
 
-  before :each do
-    FactoryGirl.create :user
-    sign_in(name:"joni", password:"paras")
+  describe "When not logged in" do
+
+    def sign_up(username, password, password_confirmation)
+      visit signup_path
+
+      fill_in "Name", with: username
+      fill_in "Password", with: password
+      fill_in "Password confirmation", with: password_confirmation
+      click_button 'Submit'
+    end
+    it "can sign up" do
+
+      expect {
+        sign_up("Best", "realpassword", "realpassword")
+      }.to change { User.count }.by 1
+
+      expect(User.first.name).to eq ("Best")
+      expect(page).to have_content("User was successfully created")
+    end
+
+    it "can't sign up with duplicate name" do
+      FactoryGirl.create :user, name: "Duplicate"
+      sign_up("Duplicate", "realpassword", "realpassword")
+
+      expect(page).not_to have_content "User was successfully created"
+      expect(page).to have_content("Oh snap! You got an error!")
+      expect(page).to have_content("Name has already been taken")
+    end
   end
 
-  it "can change password" do
-    visit root_path
+  describe "When logged in" do
+    before :each do
+      FactoryGirl.create :user
+      sign_in(name: User.first.name, password:"paras")
+    end
 
-    click_link('Change password')
-    fill_in("Password", with: "parasta")
-    fill_in("Password confirmation", with: "parasta")
+    it "can change password" do
+      visit root_path
 
-    click_button('Submit')
+      click_link('Change password')
+      fill_in("Password", with: "parasta")
+      fill_in("Password confirmation", with: "parasta")
 
-    expect(page).to have_content("User updated successfully")
-    click_link("Sign out")
+      click_button('Submit')
 
-    expect(page).not_to have_content("joni")
-    sign_in(name:"joni", password:"parasta")
-    expect(page).to have_content("joni")
+      expect(page).to have_content("User updated successfully")
+      click_link("Sign out")
+
+      expect(page).not_to have_content(User.first.name)
+      sign_in(name: User.first.name, password:"parasta")
+      expect(page).to have_content(User.first.name)
+    end
   end
 end
