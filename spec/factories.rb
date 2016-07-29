@@ -2,9 +2,16 @@ FactoryGirl.define do
 
   sequence(:name) { |n| "Example name #{n}" }
 
+  factory :admin, class: User do
+    name
+    password "best"
+    admin true
+  end
+
   factory :user do
     name
     password "paras"
+    admin false
   end
 
   factory :week do

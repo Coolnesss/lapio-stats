@@ -9,6 +9,19 @@ class ApplicationController < ActionController::Base
   end
 
   def authorize
-    redirect_to login_path, notice:'you should be signed in' if current_user.nil?
+    redirect_to login_path, notice:'you should be signed in' unless current_user
+  end
+
+  def authorize_self
+    case params[:controller]
+    when "submissions"
+      # TODO
+    when "users"
+      redirect_to login_path, notice: "This isn't yours to modify!" unless current_user.id.to_s == params[:id] or current_user.admin?
+    end
+  end
+
+  def authorize_admin
+    redirect_to login_path, notice: 'you should be an admin to view this' unless current_user and current_user.admin?
   end
 end

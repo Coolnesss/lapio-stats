@@ -12,6 +12,7 @@ describe "User" do
       fill_in "Password confirmation", with: password_confirmation
       click_button 'Submit'
     end
+
     it "can sign up" do
 
       expect {
@@ -54,5 +55,12 @@ describe "User" do
       sign_in(name: User.first.name, password:"parasta")
       expect(page).to have_content(User.first.name)
     end
-  end
+
+    it "can't change other users' passwords" do
+      target = FactoryGirl.create :user, name: "target"
+      visit edit_user_path(target)
+
+      expect(page).to have_content("This isn't yours to modify!")
+    end
+   end
 end
