@@ -18,14 +18,14 @@
         <% submissions.each do |submission| %>
           <tr data-student="<%= submission.student_id %>">
             <td><%= submission.week.name %> (<%= submission.week_id %>)</td>
-            <td><%= link_to submission.student_id, submissions_path(:search => submission.student_id), class:"btn btn-primary btn-xs" %></td>
+            <td><%= link_to submission.user.name, submissions_path(:search => submission.user.name), class:"btn btn-primary btn-xs" %></td>
             <td class="hidden-xs"><span class="badge"><%= submission.points %></span></td>
             <% if submission.percentage <= 90 %>
               <td><span class="badge"><%= submission.percentage %></span></td>
             <% else %>
               <td><span class="badge-success"><%= submission.percentage %></span></td>
             <% end %>
-            <% if current_user %>
+            <% if current_user and (current_user == submission.user or current_user.admin?) %>
               <td><%= link_to 'Edit', edit_submission_path(submission), class:"btn btn-xs btn-warning" %>
               <td><%= link_to 'Destroy', submission, class: "btn btn-xs btn-danger", method: :delete, data: {confirm: 'Are you sure?' } %>
             <% end %>

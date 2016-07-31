@@ -1,6 +1,7 @@
 class SubmissionsController < ApplicationController
   before_action :set_submission, only: [:show, :edit, :update, :destroy]
-  before_filter :authorize, except: [:index, :show]
+  before_action :authorize, except: [:index, :show]
+  before_action :authorize_self, except: [:index, :show, :new, :create]
 
   # GET /submissions
   # GET /submissions.json
@@ -34,7 +35,7 @@ class SubmissionsController < ApplicationController
     @submission.user = current_user
 
     if dup = @submission.duplicate
-      redirect_to edit_submission_path(dup), alert: "Submission for student with same exercise set already exists. Edit it below."
+      redirect_to edit_submission_path(dup), alert: "You already have a submission for this week. Edit it below."
       return
     end
     respond_to do |format|
@@ -80,6 +81,6 @@ class SubmissionsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def submission_params
-      params.require(:submission).permit(:week_id, :student_id, :points)
+      params.require(:submission).permit(:week_id, :points)
     end
 end

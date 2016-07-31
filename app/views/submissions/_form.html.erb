@@ -18,10 +18,6 @@
     <%= f.collection_select(:week_id, Week.order(:id), :id, :name, {}, {class: 'form-control'}) %>
   </div>
   <div class="field">
-    <%= f.label :student_id %><br>
-    <%= f.text_field :student_id, class: "form-control" %>
-  </div>
-  <div class="field">
     <%= f.label :points %><br>
     <%= f.number_field :points, class: "form-control" %>
   </div>

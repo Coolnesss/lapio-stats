@@ -5,6 +5,7 @@ FactoryGirl.define do
   factory :admin, class: User do
     name
     password "best"
+    student_id "014475359"
     admin true
   end
 
@@ -12,6 +13,7 @@ FactoryGirl.define do
     name
     password "paras"
     admin false
+    student_id "014475359"
   end
 
   factory :week do
@@ -20,7 +22,6 @@ FactoryGirl.define do
   end
 
   factory :submission do
-    student_id "014475359"
     points 20
     week
     user

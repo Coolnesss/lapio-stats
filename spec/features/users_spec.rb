@@ -4,10 +4,11 @@ describe "User" do
 
   describe "When not logged in" do
 
-    def sign_up(username, password, password_confirmation)
+    def sign_up(username, student_id, password, password_confirmation)
       visit signup_path
 
       fill_in "Name", with: username
+      fill_in "user[student_id]", with: student_id
       fill_in "Password", with: password
       fill_in "Password confirmation", with: password_confirmation
       click_button 'Submit'
@@ -16,16 +17,21 @@ describe "User" do
     it "can sign up" do
 
       expect {
-        sign_up("Best", "realpassword", "realpassword")
+        sign_up("Best", "123123123", "realpassword", "realpassword")
       }.to change { User.count }.by 1
 
       expect(User.first.name).to eq ("Best")
       expect(page).to have_content("User was successfully created")
     end
 
+    it "can't sign up with an invalid student ID" do
+      sign_up("Best", "123431121", "realpassword", "realpassword")
+      expect(page).to have_content("Student ID is not valid")
+    end
+
     it "can't sign up with duplicate name" do
       FactoryGirl.create :user, name: "Duplicate"
-      sign_up("Duplicate", "realpassword", "realpassword")
+      sign_up("Duplicate", "123123123", "realpassword", "realpassword")
 
       expect(page).not_to have_content "User was successfully created"
       expect(page).to have_content("Oh snap! You got an error!")

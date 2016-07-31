@@ -5,20 +5,6 @@ describe Submission do
     expect(Submission.count).to eq(1)
   end
 
-  it "cannot save a submission with a short student id" do
-    submission = FactoryGirl.build(:submission, student_id: 123123)
-    submission.save
-    expect(submission).not_to be_valid
-    expect(Submission.count).to eq(0)
-  end
-
-  it "cannot save a submission with an invalid student id" do
-    submission = FactoryGirl.build(:submission, student_id: "123123124")
-    submission.save
-    expect(submission).not_to be_valid
-    expect(Submission.count).to eq(0)
-  end
-
   it "cannot save a submission with too many points" do
     FactoryGirl.create :week
     submission = FactoryGirl.build(:submission, points: Week.first.max_points+1)
