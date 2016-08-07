@@ -17,6 +17,16 @@ describe "Week" do
       expect(Week.count).to eq(1)
       expect(page).to have_content("Best week")
     end
+    
+    it "can edit week" do
+      FactoryGirl.create :week
+      visit edit_week_path Week.first
+      expect(Week.first.max_points).not_to eq 15
+
+      fill_in :week_max_points, with: "15"
+      click_button "Update Week"
+      expect(Week.first.max_points).to eq 15
+    end
   end
 
   describe "Without admin" do

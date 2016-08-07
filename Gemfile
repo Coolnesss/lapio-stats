@@ -45,6 +45,8 @@ group :test do
   gem 'factory_girl_rails'
   gem 'capybara'
   gem 'launchy'
+  gem 'simplecov'
+  gem "codeclimate-test-reporter"
 end
 
 group :development, :test do
