@@ -2,14 +2,12 @@ class User < ActiveRecord::Base
   has_secure_password
 
   has_many :submissions
-
-  validates :name, uniqueness: true
-
   validate :legit_number?, on: :create
+  validates :student_id, uniqueness: true
   validates :student_id, presence: true, length: {is: 9}
 
   def legit_number?
-    errors.add(:student_id, "ID is not valid") unless User.validate_number(self.student_id)
+    errors.add(:student_id, "is not valid") unless User.validate_number(self.student_id)
   end
 
   def self.validate_number(num)

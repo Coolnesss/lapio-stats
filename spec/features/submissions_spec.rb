@@ -36,19 +36,19 @@ describe "Submission" do
 
     it "can search for submissions on list page" do
       visit submissions_path
-      expect(page).to have_content(User.first.name)
-      fill_in("Find submission with student number", with: User.second.name)
+      expect(page).to have_content(User.first.student_id)
+      fill_in("Find submission with student number", with: User.second.student_id)
       click_button("Search")
 
-      expect(page).not_to have_content(User.first.name)
+      expect(page).not_to have_content(User.first.student_id)
     end
 
     it "can click on student id to see its submissions" do
       visit submissions_path
-      expect(page).to have_content(User.first.name)
+      expect(page).to have_content(User.first.student_id)
 
-      click_link(User.first.name)
-      expect(page).not_to have_content(User.second.name)
+      click_link(User.first.student_id)
+      expect(page).not_to have_content(User.second.student_id)
       expect(page).to have_content("First week (1)")
     end
   end
@@ -57,7 +57,7 @@ describe "Submission" do
 
     before :each do
       FactoryGirl.create :user
-      sign_in(name: User.first.name , password:"paras")
+      sign_in(student_id: User.first.student_id , password:"paras")
     end
 
     it "can access submission create page" do
@@ -160,7 +160,7 @@ describe "Submission" do
       FactoryGirl.create(:submission)
 
       visit new_submission_path
-
+      save_and_open_page
       fill_in("Points", with: 12)
       click_button("Submit")
 

@@ -7,8 +7,8 @@ require 'rspec/rails'
 
 def sign_in(credentials)
   visit login_path
-  fill_in('name', with:credentials[:name])
-  fill_in('password', with:credentials[:password])
+  fill_in('student_id', with: credentials[:student_id])
+  fill_in('password', with: credentials[:password])
   click_button('Sign in')
 end
 # Requires supporting ruby files with custom matchers and macros, etc, in

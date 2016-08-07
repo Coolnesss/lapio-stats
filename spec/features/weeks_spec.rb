@@ -5,7 +5,7 @@ describe "Week" do
   describe "As admin" do
     before :each do
       FactoryGirl.create :admin
-      sign_in(name: User.first.name, password: "best")
+      sign_in(student_id: User.first.student_id, password: "best")
     end
 
     it "can create a week" do
@@ -23,7 +23,7 @@ describe "Week" do
 
     before :each do
       FactoryGirl.create :user
-      sign_in(name: User.first.name, password:"paras")
+      sign_in(student_id: User.first.student_id, password: "paras")
     end
 
     it "cannot access new week page" do

@@ -14,7 +14,7 @@ class Submission < ActiveRecord::Base
   end
 
   def self.search(search)
-    Submission.joins(:user).where("users.name LIKE ?", "%#{search}%")
+    Submission.joins(:user).where("users.student_id LIKE ?", "%#{search}%")
   end
 
   def percentage
