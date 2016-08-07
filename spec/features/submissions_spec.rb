@@ -160,7 +160,6 @@ describe "Submission" do
       FactoryGirl.create(:submission)
 
       visit new_submission_path
-      save_and_open_page
       fill_in("Points", with: 12)
       click_button("Submit")
 
