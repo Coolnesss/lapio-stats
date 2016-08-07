@@ -109,12 +109,12 @@ describe "Submission" do
       FactoryGirl.create :submission, user: User.first
 
       visit edit_submission_path(Submission.first)
-      expect(Submission.first.points).not_to eq(0)
+      expect(Submission.first.points).not_to eq 1
 
-      fill_in("Points", with: 0)
+      fill_in("Points", with: 1)
       click_button("Submit")
 
-      expect(Submission.first.points).to eq(0)
+      expect(Submission.first.points).to eq 1
     end
 
     it "can delete own submission" do

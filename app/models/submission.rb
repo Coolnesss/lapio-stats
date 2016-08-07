@@ -8,6 +8,7 @@ class Submission < ActiveRecord::Base
   #    scope: :week_id, message: "ID already has a submission for this week."
   #  }
   validate :points_is_less_or_equal_then_max
+  validates_numericality_of :points, greater_than: 0
 
   def duplicate
     Submission.find_by(user: self.user, week: week)
