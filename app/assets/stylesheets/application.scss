@@ -1,12 +1,15 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 @import "font-awesome";
-@import "mluukkai";
 
 body {
   font-family: 'Raleway';
   padding-left: 2%;
   padding-right: 2%;
+}
+
+.btn-primary {
+  border-radius:40px;
 }
 
 .navbar {
