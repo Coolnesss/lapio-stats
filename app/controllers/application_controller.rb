@@ -15,7 +15,7 @@ class ApplicationController < ActionController::Base
   def authorize_self
     case params[:controller]
     when "submissions"
-      # TODO
+      redirect_to login_path, notice: "This isn't yours to modify!" unless Submission.find(params[:id]).user == current_user
     when "users"
       redirect_to login_path, notice: "This isn't yours to modify!" unless current_user.id.to_s == params[:id] or current_user.admin?
     end

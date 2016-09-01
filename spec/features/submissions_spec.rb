@@ -117,6 +117,15 @@ describe "Submission" do
       expect(Submission.first.points).to eq 1
     end
 
+    it "can't edit others submissions" do
+      user = FactoryGirl.create :user
+      submission = FactoryGirl.create :submission, user: user
+
+      visit edit_submission_path(submission)
+      expect(page).to have_content("This isn't yours to modify!")
+
+    end
+
     it "can delete own submission" do
       FactoryGirl.create :submission, user: User.first
 
