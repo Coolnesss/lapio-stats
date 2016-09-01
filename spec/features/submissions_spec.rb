@@ -80,7 +80,6 @@ describe "Submission" do
       FactoryGirl.create :week
       visit weeks_path
       expect(page).to have_content("Create Submission")
-      click_link("Create Submission")
 
       fill_in("Points", with: 12)
       click_button("Submit")
