@@ -26,6 +26,7 @@ class SubmissionsController < ApplicationController
 
   # GET /submissions/1/edit
   def edit
+    @editing = true
   end
 
   # POST /submissions
