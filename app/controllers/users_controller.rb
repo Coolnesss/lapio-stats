@@ -1,6 +1,10 @@
 class UsersController < ApplicationController
 
-  before_action :authorize_self, except: [:new, :create]
+  before_action :authorize_self, except: [:new, :create, :index]
+
+  def index
+    @users = User.all
+  end
 
   def edit
     @user = current_user

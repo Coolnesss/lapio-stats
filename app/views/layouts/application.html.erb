@@ -47,6 +47,12 @@
                 <i class="fa fa-plus"></i> New submission
               <% end %>
             </li>
+              <% if current_user.admin? %>
+                <li>
+                  <%= link_to users_path do %>
+                    <i class="fa fa-user"></i> Users
+                  <% end %>
+              <% end %>
             <% end %>
           </ul>
 
