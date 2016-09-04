@@ -13,6 +13,8 @@ class ApplicationController < ActionController::Base
   end
 
   def authorize_self
+    return if current_user.admin?
+    
     case params[:controller]
     when "submissions"
       redirect_to login_path, notice: "This isn't yours to modify!" unless Submission.find(params[:id]).user == current_user

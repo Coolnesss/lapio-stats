@@ -67,4 +67,25 @@ describe "User" do
       expect(page).to have_content("This isn't yours to modify!")
     end
    end
+
+   describe "As admin" do
+
+     before :each do
+       FactoryGirl.create :admin
+       sign_in student_id: User.first.student_id, password: "best"
+     end
+
+     it "Can change other's passwords" do
+       FactoryGirl.create :user
+       visit edit_user_path User.last
+
+       fill_in("Password", with: "uusipassu")
+       fill_in("Password confirmation", with: "uusipassu")
+
+       click_button('Submit')
+
+       expect(User.last.authenticate "uusipassu").to eq User.last
+     end
+
+   end
 end

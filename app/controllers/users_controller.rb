@@ -7,18 +7,19 @@ class UsersController < ApplicationController
   end
 
   def edit
-    @user = current_user
+    @user = User.find params[:id]
   end
 
   def update
-    @user = current_user
-      if @user.update_attributes(user_params)
-        flash[:success]="User updated successfully"
-        redirect_to root_path
-      else
-        flash[:danger]="Error updating user"
-      render 'edit'
-      end
+    @user = User.find params[:id]
+    
+    if @user.update_attributes(user_params)
+      flash[:success]= "User updated successfully"
+      redirect_to root_path
+    else
+      flash[:danger]= "Error updating user"
+    render 'edit'
+    end
   end
 
   def new
