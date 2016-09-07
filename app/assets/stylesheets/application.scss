@@ -2,6 +2,18 @@
 @import "bootstrap";
 @import "font-awesome";
 
+.headerSortUp::after {
+  content: " ▲";
+}
+
+.headerSortDown::after {
+    content: " ▼";
+}
+
+.tableLink {
+  cursor: pointer;
+}
+
 body {
   font-family: 'Raleway';
   padding-left: 2%;

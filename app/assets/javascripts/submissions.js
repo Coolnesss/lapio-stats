@@ -19,3 +19,8 @@ $(document).on('ready page:load turbolinks:load', function(){
     });
   })
 });
+
+$(document).ready(function() {
+    $("#submissions").tablesorter({sortList: [[1,0]]});
+  }
+);
