@@ -34,11 +34,11 @@ describe "Submission" do
       expect(page).to have_content(Submission.third.student_id)
     end
 
-    it "can search for submissions on list page" do
+    it "can search for submissions on list page", js: true do
       visit submissions_path
       expect(page).to have_content(User.first.student_id)
       fill_in("Find submission with student number", with: User.second.student_id)
-      click_button("Search")
+      trigger_event_for("#search", :keyup)
 
       expect(page).not_to have_content(User.first.student_id)
     end
@@ -173,5 +173,19 @@ describe "Submission" do
 
       expect(page).to have_content("Submission was successfully created")
     end
+  end
+end
+
+# Helper for sending JavaScript events.
+# Shamelessly stolen from https://github.com/jnicklas/capybara/issues/203.
+def trigger_event_for(selector, event)
+  raise "Please supply a selector" if selector.blank?
+
+  if Capybara.javascript_driver == :selenium
+    page.execute_script %Q{ $('#{selector}').trigger("#{event}") }
+  end
+
+  if Capybara.javascript_driver == :webkit
+    page.find(selector).trigger(event.to_sym)
   end
 end
