@@ -18,7 +18,7 @@
         <% submissions.each do |submission| %>
           <tr data-student="<%= submission.student_id %>">
             <td><%= submission.week.name %> (<%= submission.week_id %>)</td>
-            <td><%= link_to submission.user.student_id, submissions_path(:search => submission.user.student_id), class:"btn btn-primary btn-xs" %></td>
+            <td class="student-id"><%= link_to submission.user.student_id, submissions_path(:search => submission.user.student_id), class:"btn btn-primary btn-xs" %></td>
             <td class="hidden-xs"><span class="badge"><%= submission.points %></span></td>
             <% if submission.percentage <= 90 %>
               <td><span class="badge"><%= submission.percentage %></span></td>
