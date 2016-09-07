@@ -1,4 +1,7 @@
 $(document).on('ready page:load turbolinks:load', function(){
+
+  $("#submissions").tablesorter({sortList: [[1,0]]});
+
   var search = $("#search");
   search.focus();
   var submissions = $("#submissions tbody tr");
@@ -19,8 +22,3 @@ $(document).on('ready page:load turbolinks:load', function(){
     });
   })
 });
-
-$(document).ready(function() {
-    $("#submissions").tablesorter({sortList: [[1,0]]});
-  }
-);
