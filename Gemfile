@@ -55,7 +55,8 @@ group :development, :test do
   gem 'byebug'
   gem 'better_errors'
   gem 'sqlite3'
-  gem 'selenium-webdriver'
+  gem 'selenium-webdriver', '2.53.4'
+  gem 'database_cleaner'
   # Access an IRB console on exception pages or by using <%= console %> in views
   gem 'rails_layout'
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
