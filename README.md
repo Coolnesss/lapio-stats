@@ -8,3 +8,5 @@ Course page for 2016 course can be found [here](https://github.com/HY-TKTL/lapio
 * Postgresql
 * Rspec, Capybara
 * Bootstrap
+
+__Note:__ To run the tests, you need Firefox version [45.0esr](https://ftp.mozilla.org/pub/firefox/releases/45.0esr/) or [47.0.1](https://ftp.mozilla.org/pub/firefox/releases/47.0.1/).
