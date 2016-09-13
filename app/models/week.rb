@@ -7,4 +7,8 @@ class Week < ActiveRecord::Base
   def to_s
     name
   end
+
+  def self.deadlines
+    "[" + Week.all.pluck(:deadline).map(&:to_f).map{|x| x*1000}.join(",") + "]"
+  end
 end

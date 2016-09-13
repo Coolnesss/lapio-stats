@@ -16,6 +16,7 @@ FactoryGirl.define do
   factory :week do
     name "First week"
     max_points 100
+    deadline 2.days.from_now
   end
 
   factory :submission do

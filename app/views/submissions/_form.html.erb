@@ -27,7 +27,20 @@
   </div>
   <br>
   <div class="actions">
-    <%= f.submit 'Submit', class: "btn btn-success" %>
+    <%= f.submit 'Submit', class: "btn btn-success", id:"submit" %>
   </div>
 </div>
 <% end %>
+
+<script>
+  var deadlines = <%= Week.deadlines %>
+
+  $( document ).ready(function() {
+    enforceDeadline(deadlines);
+  });
+
+  $("#submission_week_id").change(function() {
+    enforceDeadline(deadlines);
+  });
+
+</script>

@@ -17,3 +17,10 @@
 //= require jquery.tablesorter.min.js
 //= require turbolinks
 //= require_tree .
+function enforceDeadline(deadlines) {
+  if (new Date(deadlines[$("#submission_week_id").val()-1]) <= new Date()) {
+    $("#submit").data("confirm", "Are you sure you want to submit after deadline?");
+  } else {
+    $("#submit").removeData("confirm");
+  }
+}

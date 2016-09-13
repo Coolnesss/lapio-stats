@@ -60,6 +60,26 @@ describe "Submission" do
       sign_in(student_id: User.first.student_id , password:"paras")
     end
 
+    it "will get alert prompt when creating submission after deadline", js: true do
+      FactoryGirl.create(:week, deadline: 2.days.ago)
+      visit new_submission_path
+      fill_in("Points", with: 12)
+      click_button "Submit"
+
+      expect(page).to have_content("Are you sure")
+
+    end
+
+    it "wont get alert prompt when creating submission before deadline", js: true do
+      FactoryGirl.create :week
+      visit new_submission_path
+      fill_in("Points", with: 12)
+      click_button "Submit"
+
+      expect(page).not_to have_content("Are you sure")
+
+    end
+
     it "can access submission create page" do
       visit new_submission_path
       expect(page).to have_content("New Submission")
