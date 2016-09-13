@@ -65,9 +65,9 @@ describe "Submission" do
       visit new_submission_path
       fill_in("Points", with: 12)
       click_button "Submit"
-
-      expect(page).to have_content("Are you sure")
-
+      a = page.driver.browser.switch_to.alert
+      expect(a.text).to include("Are you sure")
+      a.accept
     end
 
     it "wont get alert prompt when creating submission before deadline", js: true do
