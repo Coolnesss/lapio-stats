@@ -48,6 +48,7 @@ group :test do
   gem 'launchy'
   gem 'simplecov'
   gem "codeclimate-test-reporter"
+  gem "chromedriver-helper"  
 end
 
 group :development, :test do
