@@ -65,29 +65,32 @@ describe "Submission" do
       expect(page).to have_content("New Submission")
     end
 
-    it "can create a submission" do
+    it "can create a submission", js: true do
       FactoryGirl.create :week
       visit new_submission_path
 
-      fill_in("Points", with: 12)
+      check('checkbox-1')
+      check('checkbox-2')
+      check('checkbox-3')
+
       click_button("Submit")
 
       expect(Submission.count).to eq(1)
-      expect(Submission.first.points).to eq(12)
+      expect(Submission.first.points).to eq(3)
     end
 
-    it "can create submission on weeks page" do
+    it "can create submission on weeks page", js: true do
       FactoryGirl.create :week
       visit weeks_path
       expect(page).to have_content("Create Submission")
 
-      fill_in("Points", with: 12)
+      check('checkbox-1')
+
       click_button("Submit")
 
       expect(Submission.count).to eq(1)
       expect(Submission.first.points).to eq(12)
     end
-
 
     it "can access edit page" do
       FactoryGirl.create :submission, user: User.first
@@ -104,13 +107,13 @@ describe "Submission" do
       expect(page).to have_content("Editing Submission")
     end
 
-    it "can edit own submission" do
+    it "can edit own submission", js: true do
       FactoryGirl.create :submission, user: User.first
 
       visit edit_submission_path(Submission.first)
       expect(Submission.first.points).not_to eq 1
 
-      fill_in("Points", with: 1)
+      check('checkbox-1')
       click_button("Submit")
 
       expect(Submission.first.points).to eq 1
@@ -141,34 +144,37 @@ describe "Submission" do
       expect(page).not_to have_content("Destroy")
       expect(page).not_to have_content("Edit")
     end
-    it "saves a user id when a user creates a submission" do
+    it "saves a user id when a user creates a submission", js: true do
       FactoryGirl.create :week
       visit new_submission_path
 
 
-      fill_in("Points", with: 12)
+      check('checkbox-1')
+
       click_button("Submit")
 
       expect(Submission.first.user).to eq(User.first)
     end
 
-    it "redirects to edit page if trying to create duplicate" do
+    it "redirects to edit page if trying to create duplicate", js: true do
       FactoryGirl.create :submission, user: User.first
       visit new_submission_path
 
-      fill_in("Points", with: 12)
+      check('checkbox-1')
+
       click_button("Submit")
 
       expect(page).to have_content("Editing Submission")
       expect(page).to have_content("You already have a submission for this week. Edit it below.")
     end
 
-    it "doesnt redirect if creating new submission for a different week" do
+    it "doesnt redirect if creating new submission for a different week", js: true do
       FactoryGirl.create(:week, name:"Best week")
       FactoryGirl.create(:submission)
 
       visit new_submission_path
-      fill_in("Points", with: 12)
+      check('checkbox-1')
+
       click_button("Submit")
 
       expect(page).to have_content("Submission was successfully created")

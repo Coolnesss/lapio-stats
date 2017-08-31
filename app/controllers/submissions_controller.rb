@@ -58,6 +58,7 @@ class SubmissionsController < ApplicationController
         format.html { redirect_to submissions_path, notice: 'Submission was successfully updated.' }
         format.json { render :show, status: :ok, location: @submission }
       else
+        @editing = true
         format.html { render :edit }
         format.json { render json: @submission.errors, status: :unprocessable_entity }
       end

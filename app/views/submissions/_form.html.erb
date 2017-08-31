@@ -13,17 +13,23 @@
     </div>
   <% end %>
 
-  <% if @editing %>
-    <h2><%= @submission.week %></h2>
-  <% else %>
-    <div class="field">
-      <%= f.label :week_id %><br>
-      <%= f.collection_select(:week_id, Week.order(:id), :id, :name, {}, {class: 'form-control'}) %>
-    </div>
+<% if @editing %>
+  <h2><%= @submission.week %></h2>
+  <div style="display: none;" id="submission-week-id"><%= @submission.week_id%></div>
+  <% (1..@submission.week.max_points).each do |i|%>
+    <input type="checkbox" id="checkbox-<%=i%>">  Exercise <%= i %></input>
+    <br>
   <% end %>
+<% else %>
   <div class="field">
-    <%= f.label :points %><br>
-    <%= f.number_field :points, class: "form-control" %>
+    <%= f.label :week_id %><br>
+    <%= f.collection_select(:week_id, Week.order(:id), :id, :name, {}, {class: 'form-control', id: "dropdown"}) %>
+  </div>
+<% end %>
+    <%= f.number_field :points, class: "form-control", style: "display: none;", id: "submission-points", value: 0%>
+  <br>
+  <div class="field">
+    <div id="points-container"></div>
   </div>
   <br>
   <div class="actions">
