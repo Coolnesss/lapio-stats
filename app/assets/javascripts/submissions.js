@@ -34,7 +34,7 @@ $(document).on('turbolinks:load', function(){
                     : parseInt($("#submission-week-id").text())
     $("#dropdown").on("change", onDropdownChange);
     $("#submission-points").val(0)
-    for (let i = 1; i <= points[weekId]; i++) {
+    for (var i = 1; i <= points[weekId]; i++) {
       $('#checkbox-' + i).on("change", onCheckboxChecked);
     }
   })
@@ -43,7 +43,7 @@ $(document).on('turbolinks:load', function(){
   function onDropdownChange() {
     $("#points-container").html('')
     $("#submission-points").val(0)
-    for (let i = 1; i <= points[parseInt($("#dropdown").val())]; i++) {
+    for (var i = 1; i <= points[parseInt($("#dropdown").val())]; i++) {
       $("#points-container").append('<input type="checkbox" id="checkbox-' + i + '"> Exercise ' + i +'</input><br>')
     }
   }
