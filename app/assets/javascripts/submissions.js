@@ -50,6 +50,7 @@ $(document).on('ready page:load turbolinks:load', function(){
   }
 
   function onCheckboxChecked(e) {
+    console.log(e)
     var checked = e.target.checked
     var diff = checked ? 1 : -1;
     $("#submission-points").val(parseInt($("#submission-points").val()) + diff)
