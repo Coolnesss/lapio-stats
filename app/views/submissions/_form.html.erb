@@ -17,7 +17,7 @@
   <h2><%= @submission.week %></h2>
   <div style="display: none;" id="submission-week-id"><%= @submission.week_id%></div>
   <% (1..@submission.week.max_points).each do |i|%>
-    <input type="checkbox" id="checkbox-<%=i%>">  Exercise <%= i %></input>
+    <label> <input type="checkbox" id="checkbox-<%=i%>" /> Exercise <%= i %> </label>
     <br>
   <% end %>
 <% else %>
